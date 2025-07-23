@@ -10,6 +10,18 @@ They all work pretty much the same.
 
 ## Usage
 
+**Important:** Do not put the template or the plugin repository folder in `OpenplanetNext/Plugins`!
+The build script will manage that for you.
+The intended directory structure is something like:
+- home
+  - src
+    - template
+    - tm-my-great-plugin
+  - OpenplanetNext
+    - Plugins
+      - **Don't put this template folder here**
+      - my-great-plugin-dev (folder managed by the plugin build script)
+
 ### Template Preparation
 
 * Clone this repo, or download the zip and extract it.
