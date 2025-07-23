@@ -124,8 +124,12 @@ try {
             # Build archive
             $timestamp = Get-Date -UFormat %s
             $buildName = "$pluginName-$timestamp.zip"
-            $archiveFiles = @("./$pluginSrcDir/*", "./LICENSE", "./README.md")
-            Invoke-CommandWithCheck "7z" "a", $buildName, $archiveFiles
+            $pluginFiles = Get-ChildItem -Path "$pluginSrcDir" -Recurse | ForEach-Object { $_.FullName }
+            Write-Host "⚠️ Can't get the 7z path stuff to work right, it zips the whole ./ folder atm" -ForegroundColor Yellow
+            # $archiveFiles = @("./$pluginSrcDir/*", "./LICENSE", "./README.md")
+            $archiveFiles = $pluginFiles + @("./LICENSE", "./README.md")
+            Invoke-CommandWithCheck "7z" @("a", "-bb2", $buildName) + $archiveFiles
+            Write-Host "⚠️ Can't get the 7z path stuff to work right, it zips the whole ./ folder atm" -ForegroundColor Yellow
             Copy-Item -Path $buildName -Destination $releaseName -Force
             Remove-Item $buildName
             Remove-Item $tempInfoPath # Clean up temp file
