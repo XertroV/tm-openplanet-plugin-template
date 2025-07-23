@@ -32,7 +32,7 @@ function Publish-DevPlugin {
     if (Test-Path $buildDest) {
         Remove-Item -Path "$buildDest\*" -Recurse -Force
     }
-    Copy-Item -Path "$pluginSrcDir\*" -Destination $buildDest -Recurse -Force -Container
+    Copy-Item -Path "$pluginSrcDir\*" -Destination $buildDest -Recurse -Force -Container -Verbose
     Copy-Item -Path $infoTomlPath -Destination $buildDest
 
     # Modify info.toml in destination
@@ -45,7 +45,8 @@ function Publish-DevPlugin {
 
 # --- Check for required commands ---
 
-if (!Get-Command 7z -ErrorAction SilentlyContinue) {
+if (Get-Command 7z -ErrorAction SilentlyContinue) {
+} else {
     Write-Host "⚠ Error: 7z command not found. Please install 7-Zip and ensure it's in your PATH." -ForegroundColor Red
     exit 1
 }
