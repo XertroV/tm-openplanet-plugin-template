@@ -1,3 +1,5 @@
+// source: https://github.com/XertroV/tm-openplanet-plugin-template/edit/master/src/Textures/DTexture.as (which is Public Domain)
+
 const string OPENPLANET_STORAGE_FOLDER = IO::FromStorageFolder("");
 
 const vec4 cRed75 = vec4(1.0, 0.1, 0.1, 0.75);
