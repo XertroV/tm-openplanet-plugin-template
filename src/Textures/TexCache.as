@@ -1,3 +1,5 @@
+// source: https://github.com/XertroV/tm-openplanet-plugin-template/blob/master/src/Textures/TexCache.as (which is Public Domain)
+
 namespace TextureCache {
     dictionary _textures;
 
